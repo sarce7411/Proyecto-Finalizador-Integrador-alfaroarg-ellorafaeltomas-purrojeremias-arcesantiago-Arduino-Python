@@ -1,2 +1,3 @@
 # Test
-# Purro es un gay
+# Arce es un gay
+# Alfaro es genero no binarios
