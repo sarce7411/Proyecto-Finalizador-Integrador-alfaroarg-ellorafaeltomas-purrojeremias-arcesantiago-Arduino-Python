@@ -6,7 +6,3 @@ def generar():
         r = random.randint(1, 4)
         secuencia.append(r)
     return secuencia
-
-def potenciometro():
-    r = random.randint(0, 1023)
-    return r
