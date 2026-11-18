@@ -10,7 +10,7 @@ void setup() {
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
-  pinMode(6, OUTPUT); // Pin del Buzzer
+  pinMode(6, OUTPUT); // pin buzzer
   
   pinMode(8, INPUT_PULLUP);
   pinMode(9, INPUT_PULLUP);
@@ -26,7 +26,7 @@ void loop() {
   int estadoAct10 = digitalRead(10);
   int estadoAct11 = digitalRead(11);
   
-  // --- BOTÓN A (Pin 8) -> Encender LED (Pin 5) ---
+  // pulsador 8 -> led 5
   if (estadoAnt8 == HIGH && estadoAct8 == LOW) {
     Serial.println("BOTON:A");
   }
@@ -36,7 +36,7 @@ void loop() {
     digitalWrite(5, LOW);
   }
   
-  // --- BOTÓN B (Pin 9) -> Encender LED (Pin 2) ---
+  // pulsador 9 -> led 2
   if (estadoAnt9 == HIGH && estadoAct9 == LOW) {
     Serial.println("BOTON:B");
   }
@@ -46,7 +46,7 @@ void loop() {
     digitalWrite(2, LOW);
   }
   
-  // --- BOTÓN C (Pin 10) -> Encender LED (Pin 3) ---
+  // pulsador 10 -> led 3
   if (estadoAnt10 == HIGH && estadoAct10 == LOW) {
     Serial.println("BOTON:C");
   }
@@ -56,7 +56,7 @@ void loop() {
     digitalWrite(3, LOW);
   }
   
-  // --- BOTÓN D (Pin 11) -> Encender LED (Pin 4) ---
+  // pulsador 11 -> led 4
   if (estadoAnt11 == HIGH && estadoAct11 == LOW) {
     Serial.println("BOTON:D");
   }
@@ -66,7 +66,7 @@ void loop() {
     digitalWrite(4, LOW);
   }
   
-  // Actualización de estados
+  // actualizasr estados
   estadoAnt8 = estadoAct8;
   estadoAnt9 = estadoAct9;
   estadoAnt10 = estadoAct10;
@@ -74,16 +74,16 @@ void loop() {
   
   
 
-  // --- ESCUCHAR ÓRDENES DE PYTHON PARA EL BUZZER ---
+  // escuchar al python
   if (Serial.available() > 0) {
     String comando = Serial.readStringUntil('\n');
     comando.trim();
 
     if (comando == "BUZZER:OK") {
-      tone(6, 1000, 200); // Tono agudo (Acierto)
+      tone(6, 1000, 200); // buzzer:ok -> tono agudo
     }
     else if (comando == "BUZZER:ERROR") {
-      tone(6, 200, 500);  // Tono grave (Error)
+      tone(6, 200, 500);  // buzzer:error -> tono grave
     }
   }
 }
