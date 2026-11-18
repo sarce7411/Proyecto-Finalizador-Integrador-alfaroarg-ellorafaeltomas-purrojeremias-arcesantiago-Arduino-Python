@@ -90,7 +90,15 @@ void nivel1() {
 }
 
 void nivel2() {
+int lecturaCruda = analogRead(A0); // Lee el potenciometro: 0 a 1023
 
+  // Enviar el valor si cambio al menos 5 unidades
+  if (abs(lecturaCruda - potAnt) >= 5) {
+    Serial.print("POT:");
+    Serial.println(lecturaCruda);
+
+    potAnt = lecturaCruda;
+  }
 }
 
 void nivel3() {
