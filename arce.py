@@ -18,12 +18,12 @@ ventana.anchor('n')
 
 secuencia = generar()
 
-tiempo = 60
+tiempo = 90
 
 texto_nivel = tk.Label(ventana, text="Nivel 1 de 3")
 texto_nivel.grid(row=5, column=0, columnspan=3)
 
-reloj = tk.Label(ventana, text=f"Tiempo: {tiempo}")
+reloj = tk.Label(ventana, text=f"Tiempo: {tiempo}s")
 reloj.grid(row=4, column=0, columnspan=3)
 
 tk.Label(ventana, text="Ingrese la secuencia generada.").grid(row=0, columnspan=3)
