@@ -20,7 +20,8 @@ void setup() {
   Serial.begin(9600);
 }
 
-void loop() {
+
+void nivel1() {
   int estadoAct8 = digitalRead(8);
   int estadoAct9 = digitalRead(9);
   int estadoAct10 = digitalRead(10);
@@ -72,8 +73,6 @@ void loop() {
   estadoAnt10 = estadoAct10;
   estadoAnt11 = estadoAct11;
   
-  
-
   // escuchar al python
   if (Serial.available() > 0) {
     String comando = Serial.readStringUntil('\n');
@@ -84,6 +83,34 @@ void loop() {
     }
     else if (comando == "BUZZER:ERROR") {
       tone(6, 200, 500);  // buzzer:error -> tono grave
+    }
+  }
+}
+
+void nivel2() {
+
+}
+
+void nivel3() {
+
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String comando = Serial.readStringUntil('\n');
+    comando.trim();
+
+    if (comando == "NIVEL1") {
+      tone(6, 1000, 200); // buzzer:ok -> tono agudo
+      nivel1()
+    }
+    else if (comando == "NIVEL2") {
+      tone(6, 200, 500);  // buzzer:error -> tono grave
+      nivel2()
+    }
+    else if (comando == "NIVEL3") {
+      tone(6, 200, 500);  // buzzer:error -> tono grave
+      nivel3()
     }
   }
 }
