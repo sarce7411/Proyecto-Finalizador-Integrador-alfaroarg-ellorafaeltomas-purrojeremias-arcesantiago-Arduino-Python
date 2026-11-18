@@ -8,8 +8,8 @@ BAUDIOS = 9600
 
 arduino = serial.Serial(PUERTO_SERIE, BAUDIOS, timeout=1)
 
-
-
+"""
 nivel1()
 nivel2()
 nivel3()
+"""
