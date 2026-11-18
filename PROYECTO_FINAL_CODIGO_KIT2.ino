@@ -5,6 +5,8 @@ int estadoAnt9 = HIGH;
 int estadoAnt10 = HIGH;
 int estadoAnt11 = HIGH;
 
+int potAnt = -100;     // 1. Variable agregada para que compile nivel3()  
+
 void setup() {
   pinMode(5, OUTPUT);
   pinMode(2, OUTPUT);
@@ -92,7 +94,14 @@ void nivel2() {
 }
 
 void nivel3() {
+  int lecturaCruda = analogRead(A0); // 0 a 1023
 
+  // Solo enviamos si la perilla se movió al menos 5 unidades (evita ruido eléctrico)
+  if (abs(lecturaCruda - potAnt) >= 5) {
+    Serial.print("POT:");
+    Serial.println(lecturaCruda);
+    potAnt = lecturaCruda;
+  }
 }
 
 void loop() {
