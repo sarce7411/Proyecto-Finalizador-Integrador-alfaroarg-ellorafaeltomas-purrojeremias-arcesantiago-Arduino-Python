@@ -1,6 +1,6 @@
 from arce import nivel1
 from alfaro import nivel2
-from purro import nivel 3
+from purro import nivel3
 import serial
 
 PUERTO_SERIE = "COM3"
