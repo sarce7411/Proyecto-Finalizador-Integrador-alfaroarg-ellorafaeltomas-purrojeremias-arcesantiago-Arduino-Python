@@ -14,3 +14,6 @@ def generar():
             l = "D"
         secuencia.append(l)
     return secuencia
+
+def generar1():
+    return random.randint(0, 1023)

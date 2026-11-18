@@ -64,19 +64,8 @@ def nivel1():
     mensaje_final = tk.Label(ventana, text="", pady=40, font=(10))
     mensaje_final.grid(row=3, columnspan=3)
 
-    def siguiente_nivel():
-        global secuencia, posicion
-
-        secuencia = generar()
-        posicion = 0
-
-        for caja in cajas:
-            caja.config(text="")
-
-        mensaje_final.config(text="")
-
     def verificar():
-        global posicion
+        nonlocal posicion
         gano = False
         if caja1.cget("text") == secuencia[0]:
             if caja2.cget("text") == secuencia[1]:
@@ -132,7 +121,7 @@ def nivel1():
     b_confirmar = tk.Button(text="Confirmar", command=verificar, height=2, width=10, font=("Arial"), bg="green", fg="white").grid(row=2, columnspan=3)
 
     def mostrar_letra(letra):
-        global posicion
+        nonlocal posicion
 
         if posicion < len(cajas):
             cajas[posicion].config(text=letra)
@@ -154,7 +143,7 @@ def nivel1():
         ventana.after(50, leer_arduino)
 
     def actualizar_tiempo():
-        global tiempo
+        nonlocal tiempo
 
         reloj.config(text=f"Tiempo: {tiempo}")
 

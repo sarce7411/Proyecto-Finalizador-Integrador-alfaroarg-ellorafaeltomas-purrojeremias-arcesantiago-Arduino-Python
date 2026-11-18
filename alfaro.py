@@ -9,9 +9,9 @@ from secrandom import generar1
 
 def nivel_2():
 
-    intentos = 3
+    intentos = 5
 
-    PUERTO_SERIE = "/dev/ttyACM0"
+    PUERTO_SERIE = "COM3"
     BAUDIOS = 9600
 
     arduino = serial.Serial(PUERTO_SERIE, BAUDIOS, timeout=0.1)
@@ -29,6 +29,7 @@ def nivel_2():
 
     tiempo = 90
     ultimo_valor = None
+    pendiente = b""
 
     # Titulo
     tk.Label(
@@ -40,7 +41,7 @@ def nivel_2():
     # Numero secreto
     tk.Label(
         ventana,
-        text=f"Numero a adivinar:\n{num}",
+        text=f"Numero a adivinar (0 a 1023):\n{num}",
         font=("Arial", 14)
     ).grid(row=1, column=0, padx=20, pady=20)
 
@@ -75,33 +76,33 @@ def nivel_2():
     )
     reloj.grid(row=4, column=0, columnspan=2)
 
+    def recibir_valor():
+        nonlocal ultimo_valor, pendiente
+
+        if arduino.in_waiting:
+            pendiente += arduino.read(arduino.in_waiting)
+            lineas = pendiente.split(b"\n")
+            pendiente = lineas.pop()
+            for linea in lineas:
+                dato = linea.strip().removeprefix(b"POT:")
+                if dato.isdigit() and len(dato) <= 4 and int(dato) <= 1023:
+                    ultimo_valor = int(dato)
+
     def leer_arduino():
-
-        nonlocal ultimo_valor
-
-        if arduino.in_waiting > 0:
-
-            entrada_pot = arduino.readline().decode().strip()
-
-            if entrada_pot.isdigit():
-
-                ultimo_valor = int(entrada_pot)
-
-                pot_label.config(
-                    text=f"Pusiste el numero:\n{ultimo_valor}"
-                )
-
+        recibir_valor()
         ventana.after(100, leer_arduino)
 
     def verificar():
-
         nonlocal intentos
+        recibir_valor()
 
         if ultimo_valor is None:
             mensaje.config(text="Mueve el potenciometro primero.")
             return
 
-        if ultimo_valor == num:
+        pot_label.config(text=f"Pusiste el numero:\n{ultimo_valor}")
+
+        if abs(ultimo_valor - num) <= 5:
 
             mensaje.config(text="¡Encontraste el numero!")
             arduino.write(b"BUZZER:OK\n")
