@@ -182,3 +182,5 @@ def nivel_2():
     actualizar_tiempo()
 
     ventana.mainloop()
+
+nivel_2()

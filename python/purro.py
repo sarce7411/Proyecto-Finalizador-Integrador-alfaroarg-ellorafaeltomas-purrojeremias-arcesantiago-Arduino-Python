@@ -182,3 +182,5 @@ def nivel3():
 
 if __name__ == "__main__":
     nivel3()
+
+nivel3()

@@ -99,12 +99,12 @@ pip install pyserial
 ## 📸 Capturas de la interfaz funcionando
 
 A continuación se muestra la interfaz gráfica del juego en funcionamiento:
-
+![alt text](image.png)
 ![Pantalla principal del juego](ruta/a/tu/captura_principal.png)
-*Pantalla principal mostrando el cronómetro, el desafío activo, los intentos restantes y el panel de pistas.*
+![alt text](image-2.png)
 
 ![Pantalla de victoria o desafío 2](ruta/a/tu/captura_secundaria.png)
-*[COMPLETAR: Agregar una segunda captura del juego corriendo, por ejemplo, en el desafío 2, 3 o en la pantalla de victoria/derrota].*
+![alt text](image-1.png)
 
 ---
 
