@@ -144,8 +144,8 @@ def nivel3():
                 ventana.destroy()
 
                 messagebox.showinfo(
-                    "¡Ganaste!",
-                    "¡Completaste el nivel tres!"
+                    "Ganaste!",
+                    "Completaste el nivel tres!"
                 )
                 return
 
@@ -178,9 +178,3 @@ def nivel3():
     actualizar_tiempo()
 
     ventana.mainloop()
-
-
-if __name__ == "__main__":
-    nivel3()
-
-nivel3()

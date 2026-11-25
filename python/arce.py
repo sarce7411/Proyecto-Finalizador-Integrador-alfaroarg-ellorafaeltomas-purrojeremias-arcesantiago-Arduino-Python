@@ -154,7 +154,7 @@ def nivel1():
         else:
             arduino.write(b"BUZZER:ERROR\n")
             ventana.destroy()
-            messagebox.showinfo("Fin", "¡Se acabó el tiempo!")
+            messagebox.showinfo("Fin", "se te acabó el tiempo!")
 
     leer_arduino()
     actualizar_tiempo()

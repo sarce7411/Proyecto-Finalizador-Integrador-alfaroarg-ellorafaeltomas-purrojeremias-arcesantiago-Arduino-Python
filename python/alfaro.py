@@ -183,4 +183,3 @@ def nivel_2():
 
     ventana.mainloop()
 
-nivel_2()
